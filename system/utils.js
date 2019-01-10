@@ -8,7 +8,8 @@ let utils = {
         var files = fs.readdirSync( globPath );
         for(let file of files){
             let file_path = globPath + path.sep + file;
-            if(file_path.indexOf('common') > -1){
+           
+            if(file_path.indexOf('common') > -1 || file_path.indexOf('less') > -1){
                 continue;
             }
             if( fs.statSync(file_path).isDirectory()){
@@ -24,11 +25,12 @@ let utils = {
         let content = rule.run(_path);
         content = content.replace(/{__VER__}/g, bt.tool.uniqueId );
         if(formatHtml){
-            content = minify(content,{removeComments: true,collapseWhitespace: true,minifyJS:true, minifyCSS:true});
+            content = minify(content,{removeComments: false,collapseWhitespace: true,minifyJS:true, minifyCSS:true});
         }
         this.regDirectory(_path,content);
     },
     regDirectory(_path,content){
+        _path = _path.replace(/\\/g, "/");
         _path = _path.replace(global.templateDirectory.replace('.',''),global.outDirectory);
         let filepath = path.resolve(_path);
         let dirpath = path.dirname(filepath);

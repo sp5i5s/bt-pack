@@ -36,11 +36,13 @@ let rule = {
         }
     },
     run( _path ){
-        let headerContent = fs.readFileSync(global.commonDirectory + 'header.html','utf-8');
-        let footerContent = fs.readFileSync(global.commonDirectory + 'footer.html','utf-8');
         this.htmlContent = fs.readFileSync(_path,'utf-8');
-        this.htmlContent = this.htmlContent.replace(/{__HEADER__}/g, headerContent );
-        this.htmlContent = this.htmlContent.replace(/{__FOOTER__}/g, footerContent );
+        if(global.hasCommon){
+            let headerContent = fs.readFileSync(global.commonDirectory + 'header.html','utf-8');
+            let footerContent = fs.readFileSync(global.commonDirectory + 'footer.html','utf-8');
+            this.htmlContent = this.htmlContent.replace(/{__HEADER__}/g, headerContent );
+            this.htmlContent = this.htmlContent.replace(/{__FOOTER__}/g, footerContent );
+        }
         return this._replace();
     }
 }
