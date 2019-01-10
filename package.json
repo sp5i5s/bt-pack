@@ -1,6 +1,6 @@
 {
   "name": "bt-pack",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "main": "app.js",
   "scripts": {
     "watch": "node app.js"

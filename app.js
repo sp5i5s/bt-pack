@@ -12,6 +12,8 @@ module.exports = {
                 if(global.singleListen){
                     if(f.indexOf('less') == -1){
                         utils.readTeamplate('.\\' + f);
+                    }else{
+                        utils.lessHandle('.\\' + f);
                     }
                 }else{
                     utils.queryFolderFiles();
