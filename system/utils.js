@@ -9,11 +9,8 @@ let utils = {
         var files = fs.readdirSync( globPath );
         for(let file of files){
             let file_path = globPath + path.sep + file;
-           
             if(file_path.indexOf('common') > -1){
                 continue;
-            }else if(file_path.indexOf('less') > -1){
-                lessHandle(file_path)
             }
             if( fs.statSync(file_path).isDirectory()){
                 fs.mkdir(file_path,(err) => {
@@ -27,10 +24,19 @@ let utils = {
     readTeamplate(_path){
         let content = rule.run(_path);
         content = content.replace(/{__VER__}/g, bt.tool.uniqueId );
+        content = content.replace(/{__RESDIM__}/g, global.resDirectoryDim );
+        // 执行垃圾清理
+        content =  this._clear(content);
+        
         if(formatHtml){
             content = minify(content,{removeComments: false,collapseWhitespace: true,minifyJS:true, minifyCSS:true});
         }
         this.regDirectory(_path,content);
+    },
+    _clear(content){
+        content = content.replace(new RegExp('{__LINKS__}','g'), '' );
+        content = content.replace(new RegExp('{__SCRIPTS__}','g'), '' );
+        return content;
     },
     regDirectory(_path,content){
         _path = _path.replace(/\\/g, "/");
@@ -48,7 +54,23 @@ let utils = {
             }
         });
     },
-    lessHandle(_path){
+    queryLessFiles(globPath = global.listenDirectory + 'less'){
+        globPath = globPath.replace(/\\/g, "/");
+        if(globPath.indexOf('.less') > -1){
+            this.lessHandle(globPath)
+        }else{
+            var files = fs.readdirSync( globPath );
+            for(let file of files){
+                var _path = globPath + path.sep + file;
+                if( fs.statSync(_path).isDirectory()){
+                    fs.mkdir(_path,(err) => {
+                        this.queryLessFiles(_path)
+                    });
+                }
+            }
+        }
+    },
+    lessHandle(_path = null){
         _path = _path.replace(/\\/g, "/");
         _path = _path.replace(global.listenDirectory+'less','.'+global.outDirectory+'assets/css');
         _path = _path.replace('.less','.css');

@@ -1,12 +1,37 @@
 {
-  "name": "bt-pack",
-  "version": "1.0.7",
-  "main": "app.js",
-  "scripts": {
-    "watch": "node app.js"
+  "_from": "bt-pack@^1.0.8",
+  "_id": "bt-pack@1.0.9",
+  "_inBundle": false,
+  "_integrity": "sha512-bBYqG3sn93pIEgOmIg3XGswfgrUW0i5TuNrzPn77MGnmswxpLbJju6DTwDJQb19N4icGzTDiSPGM7myw3N/iBg==",
+  "_location": "/bt-pack",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "bt-pack@^1.0.8",
+    "name": "bt-pack",
+    "escapedName": "bt-pack",
+    "rawSpec": "^1.0.8",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.8"
   },
-  "author": "BT",
-  "license": "MIT",
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/bt-pack/-/bt-pack-1.0.9.tgz",
+  "_shasum": "4d038dd029a900f49b08c238300af8d31ef19b91",
+  "_spec": "bt-pack@^1.0.8",
+  "_where": "D:\\myProject\\OneSmart\\UPC\\upc-design",
+  "author": {
+    "name": "BT"
+  },
+  "browser": {
+    "net": false,
+    "fs": false,
+    "child_process": false
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "babel": "^6.23.0",
     "babel-polyfill": "^6.26.0",
@@ -15,23 +40,26 @@
     "html-minifier": "^3.5.21",
     "nprogress": "^0.2.0"
   },
-  "browser": {
-    "net": false,
-    "fs": false,
-    "child_process": false
-  },
+  "deprecated": false,
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
+    "bt-utils": "^0.1.0",
     "html-loader": "^0.3.0",
     "html-webpack-plugin": "^2.28.0",
     "less": "^2.7.3",
     "less-loader": "^2.2.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
+    "watch": "^0.5.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.9.7",
-    "webpack-merge": "^3.0.0",
-    "watch": "^0.5.0",
-    "bt-utils": "^0.1.0"
-  }
+    "webpack-merge": "^3.0.0"
+  },
+  "license": "MIT",
+  "main": "app.js",
+  "name": "bt-pack",
+  "scripts": {
+    "watch": "node app.js"
+  },
+  "version": "1.1.2"
 }

@@ -17,6 +17,8 @@ module.exports = {
                     }
                 }else{
                     utils.queryFolderFiles();
+                    // bt.log('正在执行px2em转换 > ' + new Date().toLocaleString());
+                    utils.queryLessFiles();
                 }
                 bt.log('打包完成 > ' + new Date().toLocaleString());
             }

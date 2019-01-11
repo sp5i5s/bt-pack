@@ -93,7 +93,7 @@ var cssBlock = function (px, cssfile, callback) {
 
 var emToFile = function (path, emChunk, callback) {
     fs.writeFileSync(path, emChunk, 'utf-8');
-    console.log(path + '-->px2em success!');
+    // console.log(path + '-->px2em success!');
 };
 
 module.exports = cssFormate;
