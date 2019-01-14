@@ -10,15 +10,16 @@ module.exports = {
             }else{
                 bt.log('正在重新打包 > ' + new Date().toLocaleString());
                 if(global.singleListen){
-                    if(f.indexOf('less') == -1){
-                        utils.readTeamplate('.\\' + f);
-                    }else{
+                    if(global.hasLessPx2Em){
                         utils.lessHandle('.\\' + f);
+                    }else{
+                        utils.readTeamplate('.\\' + f);
                     }
                 }else{
                     utils.queryFolderFiles();
-                    // bt.log('正在执行px2em转换 > ' + new Date().toLocaleString());
-                    utils.queryLessFiles();
+                    if(global.hasLessPx2Em){
+                        utils.queryLessFiles();
+                    }
                 }
                 bt.log('打包完成 > ' + new Date().toLocaleString());
             }

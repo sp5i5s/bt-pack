@@ -56,6 +56,9 @@ let utils = {
     },
     queryLessFiles(globPath = global.listenDirectory + 'less'){
         globPath = globPath.replace(/\\/g, "/");
+        if(globPath.indexOf('libs') > -1){
+            return;
+        }
         if(globPath.indexOf('.less') > -1){
             this.lessHandle(globPath)
         }else{
@@ -66,6 +69,8 @@ let utils = {
                     fs.mkdir(_path,(err) => {
                         this.queryLessFiles(_path)
                     });
+                }else{
+                    this.lessHandle(_path)
                 }
             }
         }
